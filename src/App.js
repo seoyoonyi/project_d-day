@@ -1,9 +1,10 @@
-
+import DayEditor from './DayEditor';
+import DayList from './DayList';
 
 function App() {
   return (
     <div className="App">
-      <div>메인</div>
+      <DayList />
     </div>
   );
 }
