@@ -1,17 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import DayItem from './DayItem';
 
-const DayList = () => {
+function DayList({ daylist }) {
   return (
-    <header>
-      <h1 className="logo">로고</h1>
-      <div className="addDay">
-        <Link to="dayeditor">
-          <button>+</button>
-        </Link>
-      </div>
-    </header>
+    <div>
+      {daylist.map((it) => (
+        <DayItem {...it} />
+      ))}
+    </div>
   );
-};
+}
 
 export default DayList;

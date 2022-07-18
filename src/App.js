@@ -1,12 +1,31 @@
+import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import DayEditor from './DayEditor';
-import DayList from './DayList';
+import Home from './Home';
 
-function App() {
+const App = () => {
+  const [data, setData] = useState([]);
+
+  const onCreate = (title) => {
+    const newItem = {
+      title,
+    };
+    setData((data) => [newItem, ...data]);
+  };
+
   return (
-    <div className="App">
-      <DayList />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Home daylist={data} />} />
+          <Route
+            path="/dayeditor"
+            element={<DayEditor onCreate={onCreate} />}
+          />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
