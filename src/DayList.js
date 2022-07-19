@@ -4,8 +4,8 @@ import DayItem from './DayItem';
 function DayList({ daylist }) {
   return (
     <div>
-      {daylist.map((it) => (
-        <DayItem {...it} />
+      {daylist.map((it, idx) => (
+        <DayItem key={idx} {...it} />
       ))}
     </div>
   );

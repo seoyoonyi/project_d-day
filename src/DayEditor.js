@@ -1,10 +1,15 @@
 import { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+export const getStringDate = (date) => {
+  return date.toISOString().slice(0, 10);
+};
+
 const DayEditor = ({ onCreate }) => {
   const titleInput = useRef();
   const [state, setState] = useState({
     title: '',
+    date: getStringDate(new Date()),
   });
   const navigate = useNavigate();
   const handleChangedata = (e) => {
@@ -19,9 +24,9 @@ const DayEditor = ({ onCreate }) => {
       titleInput.current.focus();
       return;
     }
-    onCreate(state.title);
+    onCreate(state.title, state.date);
     alert('저장성공');
-    setState({ title: '' });
+    setState({ title: '', date: getStringDate(new Date()) });
 
     navigate('/', { replace: true });
   };
@@ -45,6 +50,14 @@ const DayEditor = ({ onCreate }) => {
           value={state.title}
           onChange={handleChangedata}
         />
+        <div className="dateBox">
+          <input
+            type="date"
+            name="date"
+            value={state.date}
+            onChange={handleChangedata}
+          />
+        </div>
       </main>
     </>
   );

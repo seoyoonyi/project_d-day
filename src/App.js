@@ -6,9 +6,10 @@ import Home from './Home';
 const App = () => {
   const [data, setData] = useState([]);
 
-  const onCreate = (title) => {
+  const onCreate = (title, date) => {
     const newItem = {
       title,
+      date,
     };
     setData((data) => [newItem, ...data]);
   };
